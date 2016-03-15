@@ -1,3 +1,3 @@
 # popularmoviesapp
 
-Please edit the app/build.gradle to add respective API key
+Please edit the application's  gradle.properties file to add respective API key
