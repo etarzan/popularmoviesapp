@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:id="@+id/movie_grid_view"
     android:numColumns="3"
-    android:horizontalSpacing="0dp"
-    android:verticalSpacing="0dp"
+    android:horizontalSpacing="@dimen/grid_view_horizontal_spacing"
+    android:verticalSpacing="@dimen/grid_view_vertical_spacing"
+   android:stretchMode="columnWidth"
     tools:context=".MainActivityFragment"
     android:padding="0px">
 

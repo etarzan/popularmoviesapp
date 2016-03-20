@@ -1,71 +1,75 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rajarshisharma.popularmoviesstage1.DetailActivityFragment">
-    <TextView
-        android:id="@+id/movie_title"
-        android:text="Dirty Harry part 1"
-        android:layout_height="120dp"
+    android:isScrollContainer="true"
+    tools:context="com.rajarshisharma.popularmoviesstage1.DetailActivityFragment"
+    android:id="@+id/detail_view_scroll_view">
+    <LinearLayout android:id="@+id/detail_view_linear_layout_main"
         android:layout_width="match_parent"
-        android:background="#008080"
-        android:textColor="#FFFFFF"
-        android:textSize="35sp"
-        android:paddingTop="20dp"
-        android:paddingLeft="10dp"
-        android:layout_alignParentTop="true"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/movie_title"
+            android:text="Dirty Harry part 1"
+            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:background="#008080"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/movie_title_text_size"
+            android:paddingTop="@dimen/movie_title_padding_top"
+            android:paddingLeft="@dimen/movie_title_padding_left"
+            android:layout_alignParentTop="true"
+            />
 
-    <ImageView
-        android:id="@+id/movie_poster_detail"
-        android:layout_width="160dp"
-        android:layout_height="213dp"
-        android:layout_below="@+id/movie_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/poster"
-        android:padding="0dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/detail_view_rel_layout">
 
-    <TextView
-        android:id="@+id/relase_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:textSize="25sp"
-        android:text="Release Date"
-        android:paddingRight="20dp"
-        android:layout_toRightOf="@id/movie_poster"
-        android:layout_below="@id/movie_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <ImageView
+                android:id="@+id/movie_poster_detail"
+                android:layout_width="@dimen/movie_poster_width"
+                android:layout_height="@dimen/movie_poster_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/poster"
+                android:padding="5dp"/>
 
-    <TextView
-        android:id="@+id/vote_average"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vote Average"
-        android:textSize="14sp"
-        android:paddingRight="20dp"
-        android:layout_toRightOf="@id/movie_poster"
-        android:layout_below="@id/relase_date"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/relase_date"
-        android:layout_alignEnd="@+id/relase_date" />
+            <TextView
+                android:id="@+id/release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="50dp"
+                android:textSize="25sp"
+                android:text="Release Date"
+                android:paddingRight="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/movie_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="60dp"
-        android:text="Long Movie Descript Lorem Ipsum blah blah blah"
-        android:textSize="14sp"
-        android:layout_below="@id/movie_poster"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/relase_date"
-        android:layout_alignEnd="@+id/relase_date"
-        android:layout_alignParentBottom="true"
-        />
+            <TextView
+                android:id="@+id/vote_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vote Average"
+                android:textSize="@dimen/vote_avg_txt_size"
+                android:paddingRight="@dimen/vote_avg_padding_right"
+                android:layout_below="@id/release_date"
+                android:layout_alignRight="@+id/release_date"
+                android:layout_alignEnd="@+id/release_date" />
+        </RelativeLayout>
 
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/movie_poster"
+            android:layout_toRightOf="@+id/movie_poster"
+            android:id="@+id/movie_desc"
+            android:text="Long Movie Description Lorem Ipsum blah blah blah"
+            android:textSize="@dimen/movie_desc_text_size"
+            android:layout_gravity="bottom"
+            android:padding="@dimen/detail_view_desc_padding"/>
 
-
-
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>

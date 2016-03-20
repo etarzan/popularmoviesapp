@@ -45,7 +45,7 @@ public class MovieGridAdapter extends ArrayAdapter<Movie> {
         String size = "w342"; //"w92", "w154", "w185", "w342", "w500", "w780", or "original"
         String poster_path = ApplicationConstants.POSTER_URL_BASE + size + movie.getPosterPath();
         ImageView imageView = (ImageView) convertView.findViewById(R.id.movie_poster);
-        Picasso.with(getContext()).load(poster_path).into((ImageView) imageView);
+        Picasso.with(getContext()).load(poster_path).error(R.drawable.error).into((ImageView) imageView);
 
         return convertView;
     }
