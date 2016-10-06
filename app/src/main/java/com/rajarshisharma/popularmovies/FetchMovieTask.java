@@ -32,17 +32,11 @@ public class FetchMovieTask extends AsyncTask<String, Void, Void> {
         mContext = context;
     }
 
-    /**
-     * Take the String representing the complete movie list in JSON Format and
-     * pull out the data we need to construct the Strings needed for the wireframes.
-     * <p>
-     * Fortunately parsing is easy:  constructor takes the JSON string and converts it
-     * into an Object hierarchy for us.
-     */
+
+
     private void getMovieDataFromJson(String movieJsonStr)
             throws JSONException {
 
-        // These are the names of the JSON objects that need to be extracted.
         final String MOVIE_ID = "id";
         final String ORGLANG = "original_language";
         final String ORGTITLE = "original_title";
@@ -127,7 +121,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, Void> {
             if (cVVector.size() > 0) {
                 ContentValues[] cvArray = new ContentValues[cVVector.size()];
                 cVVector.toArray(cvArray);
-               inserted = mContext.getContentResolver().bulkInsert(MovieContract.CONTENT_URI, cvArray);
+                inserted = mContext.getContentResolver().bulkInsert(MovieContract.CONTENT_URI, cvArray);
             }
             Log.d(LOG_TAG, "FetchPopularMovie Task Complete. " + inserted + " Inserted");
 
@@ -144,28 +138,22 @@ public class FetchMovieTask extends AsyncTask<String, Void, Void> {
             return null;
         }
 
-        // These two need to be declared outside the try/catch
-        // so that they can be closed in the finally block.
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
 
-        // Will contain the raw JSON response as a string.
         String movieJsonStr = null;
 
         try {
-            // Construct the URL for the movieAPI query
-            // Possible parameters are avaiable at OWM's forecast API page, at
-
             final String MOVIE_BASE_URL =
-                    "http://api.themoviedb.org/3/discover/movie?";
+                    "http://api.themoviedb.org/3/movie/";
             final String SORT_PARAM = "sort_by";
             final String APPID_PARAM = "api_key";
-            final String PAGE_PARAM = "page";
+       //     final String PAGE_PARAM = "page";
 
             Uri builtUri = Uri.parse(MOVIE_BASE_URL).buildUpon()
-                    .appendQueryParameter(SORT_PARAM, params[0])
+                    .appendPath(params[0])
                     .appendQueryParameter(APPID_PARAM, BuildConfig.OPEN_MOVIEDB_API_KEY)
-                    .appendQueryParameter(PAGE_PARAM, params[1])
+                  //  .appendQueryParameter(PAGE_PARAM, params[1])
                     .build();
 
             URL url = new URL(builtUri.toString());
@@ -185,9 +173,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, Void> {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
-                // But it does make debugging a *lot* easier if you print out the completed
-                // buffer for debugging.
+
                 buffer.append(line + "\n");
             }
 

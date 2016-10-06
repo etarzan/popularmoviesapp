@@ -48,7 +48,6 @@ public class MovieDBHelper  extends SQLiteOpenHelper {
                 FavoritesContract._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 FavoritesContract.PAGE + "  TEXT," +
                 FavoritesContract.POSTER_PATH + "  TEXT," +
-                FavoritesContract.ADULT + "  TEXT," +
                 FavoritesContract.OVERVIEW + "  TEXT," +
                 FavoritesContract.RELEASE_DATE + "  TEXT," +
                 FavoritesContract.MOVIE_ID + "  TEXT," +

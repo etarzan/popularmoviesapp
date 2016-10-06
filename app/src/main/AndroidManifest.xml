@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rajarshisharma.popularmoviesstage1" >
+    package="com.rajarshisharma.popularmovies" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.rajarshisharma.popularmovies.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,21 +20,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.rajarshisharma.popularmovies.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.rajarshisharma.popularmovies.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rajarshisharma.popularmoviesstage1.MainActivity" />
+                android:value="com.rajarshisharma.popularmovies.MainActivity" />
         </activity>
         <activity
-            android:name=".DetailActivity"
+            android:name="com.rajarshisharma.popularmovies.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.rajarshisharma.popularmovies.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rajarshisharma.popularmoviesstage1.MainActivity" />
+                android:value="com.rajarshisharma.popularmovies.MainActivity" />
         </activity>
+        <provider
+            android:authorities="com.rajarshisharma.popularmovies"
+            android:name="com.rajarshisharma.popularmovies.data.MovieDBProvider" />
     </application>
-
 </manifest>

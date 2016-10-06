@@ -32,7 +32,7 @@ import com.squareup.picasso.Picasso;
  */
 public class DetailActivityFragment extends Fragment  implements LoaderCallbacks<Cursor> {
     private static final String LOG_TAG = DetailActivityFragment.class.getSimpleName();
-    private static final String MOVIE_SHARE_HASHTAG = " #PopularMovieApp #ByAnupam ";
+    private static final String MOVIE_SHARE_HASHTAG = " #PopularMovieApp";
     private static final int DETAIL_LOADER = 0;
     private static final int TRAILER_LOADER = 1;
     private static final int REVIEW_LOADER = 2;
@@ -87,7 +87,6 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
             FavoritesContract.TABLE_NAME + "." + FavoritesContract._ID,
             FavoritesContract.PAGE,
             FavoritesContract.POSTER_PATH,
-            FavoritesContract.ADULT,
             FavoritesContract.OVERVIEW,
             FavoritesContract.RELEASE_DATE,
             FavoritesContract.MOVIE_ID,
@@ -107,21 +106,20 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
     public static int COL_ID = 0;
     public static int COL_PAGE = 1;
     public static int COL_POSTER_PATH = 2;
-    public static int COL_ADULT = 3;
-    public static int COL_OVERVIEW = 4;
-    public static int COL_RELEASE_DATE = 5;
-    public static int COL_MOVIE_ID = 6;
-    public static int COL_ORIGINAL_TITLE = 7;
-    public static int COL_ORIGINAL_LANG = 8;
-    public static int COL_TITLE = 9;
-    public static int COL_BACKDROP_PATH = 10;
-    public static int COL_POPULARITY = 11;
-    public static int COL_VOTE_COUNT = 12;
-    public static int COL_VOTE_AVERAGE = 13;
-    public static int COL_FAVOURED = 14;
-    public static int COL_SHOWED = 15;
-    public static int COL_DOWNLOADED = 16;
-    public static int COL_SORT_BY = 17;
+    public static int COL_OVERVIEW = 3;
+    public static int COL_RELEASE_DATE = 4;
+    public static int COL_MOVIE_ID = 5;
+    public static int COL_ORIGINAL_TITLE = 6;
+    public static int COL_ORIGINAL_LANG = 7;
+    public static int COL_TITLE = 8;
+    public static int COL_BACKDROP_PATH = 9;
+    public static int COL_POPULARITY = 10;
+    public static int COL_VOTE_COUNT = 11;
+    public static int COL_VOTE_AVERAGE = 12;
+    public static int COL_FAVOURED = 13;
+    public static int COL_SHOWN = 14;
+    public static int COL_DOWNLOADED = 15;
+    public static int COL_SORT_BY = 16;
     public static int COL_TRAILER_ID = 0;
     public static int COL_TRAILER_NAME = 1;
     public static int COL_TRAILER_SIZE = 2;
@@ -186,7 +184,7 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
         if (arguments != null) {
             movie_Id = arguments.getString(Intent.EXTRA_TEXT);
         }
-        rootView = inflater.inflate(R.layout.detail_layout, container, false);
+        rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         // The ArrayAdapter will take data from a source and
         // use it to populate the ListView it's attached to.
         trailerListAdapter = new TrailerMovieAdapter(getActivity(), null, 0);
@@ -323,7 +321,6 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
 
     private void defaultShow() {
         rootView.findViewById(R.id.divisor).setVisibility(View.VISIBLE);
-        rootView.findViewById(R.id.ten).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.share).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.play).setVisibility(View.VISIBLE);
     }
@@ -410,7 +407,7 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                 backdrop.setAdjustViewBounds(true);
 
                 final String downloaded = data.getString(COL_DOWNLOADED);
-                showed = data.getString(COL_SHOWED);
+                showed = data.getString(COL_SHOWN);
                 FloatingActionButton show;
                 if (showed.equalsIgnoreCase("1")) {
                     rootView.findViewById(R.id.hide).setVisibility(View.VISIBLE);
@@ -427,7 +424,7 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                         ContentValues sh = new ContentValues();
                         if (showed.equalsIgnoreCase("1")) {
                             sh.put(MovieContract.SHOWED, "0");
-                            Toast.makeText(getContext(), "TRAILERS and REVIEWS hidden!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Hiding Trailers and Reviews", Toast.LENGTH_SHORT).show();
                             hide();
                         } else {
                             sh.put(MovieContract.SHOWED, "1");
@@ -435,10 +432,10 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                                 if (ApplicationHelperUtils.isNetworkAvailable(getActivity())) {
                                     updateMovieList();
                                     sh.put(MovieContract.DOWNLOADED, "1");
-                                    Toast.makeText(getContext(), "TRAILERS and REVIEWS shown!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Showing Trailers and review", Toast.LENGTH_SHORT).show();
                                     show();
                                 } else {
-                                    Toast.makeText(getContext(), "Network Not Available!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "Please Check your connectivity", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -461,9 +458,9 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                                 getContext().getContentResolver().update(
                                         MovieContract.CONTENT_URI.buildUpon().appendPath(movieId).build(),
                                         sh, null, new String[]{movieId});
-                                Toast.makeText(getContext(), "Click One More Time to Play!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Click One More Time to Play", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Network Not Available!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Please Check your connectivity", Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(trailerURIBase));
@@ -483,15 +480,15 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                                 getContext().getContentResolver().update(
                                         MovieContract.CONTENT_URI.buildUpon().appendPath(movieId).build(),
                                         sh, null, new String[]{movieId});
-                                Toast.makeText(getContext(), "Click One More Time to Share!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Click One More Time to Share", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Network Not Available!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Please Check your connectivity", Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Intent intent = new Intent();
                             intent.setAction(Intent.ACTION_SEND);
-                            intent.putExtra(Intent.EXTRA_TEXT,
-                                    orgTitle + "Watch : " + trailerURIBase + MOVIE_SHARE_HASHTAG);
+                            intent.putExtra(Intent.EXTRA_TEXT, "Check out this movie called "+
+                                    orgTitle + " on YouTube at: " + trailerURIBase + MOVIE_SHARE_HASHTAG);
                             intent.setType("text/plain");
                             startActivity(Intent.createChooser(intent, getString(R.string.share_links)));
                         }
@@ -511,41 +508,43 @@ public class DetailActivityFragment extends Fragment  implements LoaderCallbacks
                     movieValues.put(MovieContract.VOTE_COUNT, data.getString(COL_VOTE_COUNT));
                     movieValues.put(MovieContract.VOTE_AVERAGE, votAvg);
                     movieValues.put(MovieContract.FAVOURED, "1");
-                    movieValues.put(MovieContract.SHOWED, data.getString(COL_SHOWED));
+                    movieValues.put(MovieContract.SHOWED, data.getString(COL_SHOWN));
                     movieValues.put(MovieContract.DOWNLOADED, data.getString(COL_DOWNLOADED));
                     movieValues.put(MovieContract.SORT_BY, data.getString(COL_SORT_BY));
                 }
                 break;
             case FAVOURITE_LOADER:
                 FloatingActionButton fab;
-                boolean favoured = false;
+                boolean favorite = false;
                 if (data.moveToFirst()) {
                     do {
                         if (data.getString(COL_MOVIE_ID).equalsIgnoreCase(movie_Id)) {
-                            favoured = true;
+                            favorite = true;
                         }
                     }
                     while (data.moveToNext());
                 }
-                if (favoured) {
+                if (favorite) {
                     rootView.findViewById(R.id.bookmark).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.border_bookmark).setVisibility(View.GONE);
                     fab = (FloatingActionButton) rootView.findViewById(R.id.bookmark);
                 } else {
                     rootView.findViewById(R.id.border_bookmark).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.bookmark).setVisibility(View.GONE);
                     fab = (FloatingActionButton) rootView.findViewById(R.id.border_bookmark);
                 }
-                final boolean finalFavoured = favoured;
+                final boolean finalFavoured = favorite;
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (finalFavoured) {
                             getActivity().getContentResolver().delete(FavoritesContract.buildMoviesUriWithMovieId(movie_Id), null, null);
-                            Toast.makeText(getContext(), "REMOVED FROM FAVOURITES!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Removed from favorites list", Toast.LENGTH_SHORT).show();
                             rootView.findViewById(R.id.bookmark).setVisibility(View.GONE);
                             rootView.findViewById(R.id.border_bookmark).setVisibility(View.VISIBLE);
                         } else {
                             getActivity().getContentResolver().insert(FavoritesContract.buildMovieUri(), movieValues);
-                            Toast.makeText(getContext(), "ADDED TO FAVOURITES!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
                             rootView.findViewById(R.id.bookmark).setVisibility(View.VISIBLE);
                             rootView.findViewById(R.id.border_bookmark).setVisibility(View.GONE);
                         }
