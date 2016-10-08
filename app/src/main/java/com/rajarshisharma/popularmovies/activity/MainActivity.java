@@ -1,10 +1,14 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.rajarshisharma.popularmovies.activity.fragment.DetailActivityFragment;
+import com.rajarshisharma.popularmovies.activity.fragment.MainActivityFragment;
+import com.rajarshisharma.popularmovies.R;
 
 public class MainActivity extends AppCompatActivity implements MainActivityFragment.Callback {
 

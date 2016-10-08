@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.activity.fragment;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -18,6 +18,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rajarshisharma.popularmovies.task.FetchTrailerReviewTask;
+import com.rajarshisharma.popularmovies.R;
+import com.rajarshisharma.popularmovies.adapter.ReviewMovieAdapter;
+import com.rajarshisharma.popularmovies.adapter.TrailerMovieAdapter;
 import com.rajarshisharma.popularmovies.data.contracts.FavoritesContract;
 import com.rajarshisharma.popularmovies.data.contracts.MovieContract;
 import com.rajarshisharma.popularmovies.data.contracts.ReviewsContract;

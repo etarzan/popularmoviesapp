@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.util;
 
 /**
  * Created by Rajarshi.Sharma on 3/16/2016.

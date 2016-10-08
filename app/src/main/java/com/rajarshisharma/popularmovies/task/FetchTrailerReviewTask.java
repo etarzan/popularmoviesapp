@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.task;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.rajarshisharma.popularmovies.BuildConfig;
 import com.rajarshisharma.popularmovies.data.contracts.ReviewsContract;
 import com.rajarshisharma.popularmovies.data.contracts.TrailersContract;
+import com.rajarshisharma.popularmovies.task.FetchMovieTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;

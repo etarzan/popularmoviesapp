@@ -1,5 +1,5 @@
 
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.rajarshisharma.popularmovies.R;
+import com.rajarshisharma.popularmovies.activity.fragment.DetailActivityFragment;
 import com.squareup.picasso.Picasso;
 
 

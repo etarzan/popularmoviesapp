@@ -1,9 +1,12 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.rajarshisharma.popularmovies.activity.fragment.DetailActivityFragment;
+import com.rajarshisharma.popularmovies.R;
 
 public class DetailActivity extends AppCompatActivity {
 

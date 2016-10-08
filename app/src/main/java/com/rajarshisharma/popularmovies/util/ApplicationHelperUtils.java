@@ -12,7 +12,8 @@ import com.rajarshisharma.popularmovies.R;
 /**
  * Created by Rajarshi.Sharma on 3/17/2016.
  */
-public class ApplicationHelperUtils {
+public final class ApplicationHelperUtils {
+    private ApplicationHelperUtils(){}
 
     public static boolean isNetworkAvailable(Activity activity){
         ConnectivityManager connectionMgr= (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);

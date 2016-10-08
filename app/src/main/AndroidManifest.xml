@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.rajarshisharma.popularmovies.MainActivity"
+            android:name="com.rajarshisharma.popularmovies.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,20 +20,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.rajarshisharma.popularmovies.SettingsActivity"
+            android:name="com.rajarshisharma.popularmovies.activity.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.rajarshisharma.popularmovies.MainActivity" >
+            android:parentActivityName="com.rajarshisharma.popularmovies.activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rajarshisharma.popularmovies.MainActivity" />
+                android:value="com.rajarshisharma.popularmovies.activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.rajarshisharma.popularmovies.DetailActivity"
+            android:name="com.rajarshisharma.popularmovies.activity.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:parentActivityName="com.rajarshisharma.popularmovies.MainActivity" >
+            android:parentActivityName="com.rajarshisharma.popularmovies.activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rajarshisharma.popularmovies.MainActivity" />
+                android:value="com.rajarshisharma.popularmovies.activity.MainActivity" />
         </activity>
         <provider
             android:authorities="com.rajarshisharma.popularmovies"

@@ -1,5 +1,5 @@
 
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.rajarshisharma.popularmovies.R;
+import com.rajarshisharma.popularmovies.activity.fragment.DetailActivityFragment;
 
 public class ReviewMovieAdapter extends CursorAdapter {
     private static final String LOG_TAG = ReviewMovieAdapter.class.getSimpleName();

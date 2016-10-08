@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.activity;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -7,6 +7,8 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+
+import com.rajarshisharma.popularmovies.R;
 
 
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener{

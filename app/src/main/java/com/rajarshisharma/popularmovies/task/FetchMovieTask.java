@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.task;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Vector;
 
+import com.rajarshisharma.popularmovies.BuildConfig;
 import com.rajarshisharma.popularmovies.data.contracts.MovieContract;
 import com.rajarshisharma.popularmovies.util.ApplicationHelperUtils;
 

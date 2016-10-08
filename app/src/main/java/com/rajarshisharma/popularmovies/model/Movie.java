@@ -1,4 +1,4 @@
-package com.rajarshisharma.popularmovies;
+package com.rajarshisharma.popularmovies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
